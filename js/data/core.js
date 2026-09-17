@@ -32,30 +32,77 @@ window.AICLAB_DATA = {
       "From 1997 to 2003, he worked for several IC design companies in San Jose, CA and San Diego, CA, where he held analog circuit design manager and director positions and successfully designed many chips in mass production. Since 2003, he has been with National Chiao Tung University (NCTU), Hsinchu, Taiwan, where he is currently a Professor in the Department of Electrical and Computer Engineering. He is the Co-Director of the Biomedical Electronics Translational Research Center (BETRC) , where several highlighted bio-electronics papers were published in recent ISSCC and VLSI Circuit Symposiums. Dr. Hung was the Chairman of Electrical Engineering and Computer Science Undergraduate Honors Program (EECSHP) in NCTU. He has served on the Steering Committees of the IEEE MWSCAS and technical program committees of several IEEE conferences. He and his students have won 3 Best Paper Awards at international conferences in 2010, 2013, and 2015. He has been the Deputy Editor-In-Chief of Analog Integrated Circuits and Signal Processing since 2013. Dr. Hung has authored/co-authored over 100 peer-reviewed papers and book chapters and holds several US patents. His research interests include the design of analog and mixed-signal integrated circuits for biomedical, power management, and communication applications."
     ],
     "education": [
-      "Ph.D. The Ohio State University, Columbus, Ohio",
-      "Ph.D. Dissertation ： “Low Voltage, Low Power CMOS Analog Circuit Design Techniques for Mobile, Portable VLSI Applications”",
-      "Dissertation Advisor ： Prof. Mohammed Ismail (Sep.1993 - Mar.1997)",
-      "M.S.E.E. The Ohio State University, Columbus, Ohio",
-      "M.S. Thesis ： “Electrical Characteristics of Polycrystalline Diamond Films” (Sep.1991 - Aug.1993)",
-      "B.S.E.E. National Taiwan University, Taipei, Taiwan (Sep.1985 - Jun.1989)"
+        {
+            "degree": "Ph.D.",
+            "school": "The Ohio State University, Columbus, Ohio",
+            "details": [
+                "Ph.D. Dissertation ： “Low Voltage, Low Power CMOS Analog Circuit Design Techniques for Mobile, Portable VLSI Applications”",
+                "Dissertation Advisor ： Prof. Mohammed Ismail (Sep.1993 - Mar.1997)"
+            ]
+        },
+        {
+            "degree": "M.S.E.E.",
+            "school": "The Ohio State University, Columbus, Ohio",
+            "details": [
+                "M.S. Thesis ： “Electrical Characteristics of Polycrystalline Diamond Films” (Sep.1991 - Aug.1993)"
+            ]
+        },
+        {
+            "degree": "B.S.E.E.",
+            "school": "National Taiwan University, Taipei, Taiwan (Sep.1985 - Jun.1989)",
+            "details": []
+        }
     ],
+
     "experience": [
-      "Professor",
-      "Department of Electrical and Computer Engineering, National Chiao Tung University, Hsinchu, Taiwan (Aug.2003- present)",
-      "Analog Design Director",
-      "Analog Design Director Analog Group, Qualmaker, Inc., Fremont, California (Jul.2002- Jul.2003)",
-      "Analog Design Director",
-      "Analog Design Group, Pixelworks, Inc., San Jose, California (Panstera, Inc. was acquired by Pixelworks, Inc.) (Feb.2001- Jun.2002)",
-      "Analog Design Manager",
-      "Analog Design Group, Panstera, Inc., San Jose, California (Nov.1999- Jan.2001)",
-      "Analog Design Engineer, Staff Engineer",
-      "ASIC Group, Prominent Communications, Inc., San Diego, California (Aug.1998- Oct.1999)",
-      "Analog Design Engineer, Sr. MTS",
-      "Analog Technology Group, S3 Incorporated, Santa Clara, California (May.1997- Aug.1998)",
-      "Visiting Research Associate",
-      "Electronic Circuit Design Lab, Helsinki University of Technology, Espoo, Finland (Nov.1995 - Jul.1996)",
-      "Analog Design Engineer (Summer Internship)",
-      "Analog Integrated Circuit Design Group, Cirrus Logic Inc., Fremont, California (Jul.1995 - Oct.1995)"
+        {
+            "title": "Professor",
+            "details": [
+                "Department of Electrical and Computer Engineering, National Chiao Tung University, Hsinchu, Taiwan (Aug.2003- present)"
+            ]
+        },
+        {
+            "title": "Analog Design Director",
+            "details": [
+                "Analog Design Director Analog Group, Qualmaker, Inc., Fremont, California (Jul.2002- Jul.2003)"
+            ]
+        },
+        {
+            "title": "Analog Design Director",
+            "details": [
+                "Analog Design Group, Pixelworks, Inc., San Jose, California (Panstera, Inc. was acquired by Pixelworks, Inc.) (Feb.2001- Jun.2002)"
+            ]
+        },
+        {
+            "title": "Analog Design Manager",
+            "details": [
+                "Analog Design Group, Panstera, Inc., San Jose, California (Nov.1999- Jan.2001)"
+            ]
+        },
+        {
+            "title": "Analog Design Engineer, Staff Engineer",
+            "details": [
+                "ASIC Group, Prominent Communications, Inc., San Diego, California (Aug.1998- Oct.1999)"
+            ]
+        },
+        {
+            "title": "Analog Design Engineer, Sr. MTS",
+            "details": [
+                "Analog Technology Group, S3 Incorporated, Santa Clara, California (May.1997- Aug.1998)"
+            ]
+        },
+        {
+            "title": "Visiting Research Associate",
+            "details": [
+                "Electronic Circuit Design Lab, Helsinki University of Technology, Espoo, Finland (Nov.1995 - Jul.1996)"
+            ]
+        },
+        {
+            "title": "Analog Design Engineer (Summer Internship)",
+            "details": [
+                "Analog Integrated Circuit Design Group, Cirrus Logic Inc., Fremont, California (Jul.1995 - Oct.1995)"
+            ]
+        }
     ]
   },
   "researchCards": [

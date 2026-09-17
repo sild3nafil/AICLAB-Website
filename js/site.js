@@ -116,12 +116,64 @@
   }
 
   function renderAdvisor(main) {
-    main.innerHTML = `<div class="container">
-      ${professorHero()}
-      <section class="section-block bio-copy reveal"><h1 class="page-title">Biography</h1>${D.advisor.bio.map(x=>`<p>${x}</p>`).join('')}</section>
-      <section class="section-block reveal"><h2 class="section-title">Education</h2><div class="resume-list">${D.advisor.education.map(x=>`<div class="resume-item">${x}</div>`).join('')}</div></section>
-      <section class="section-block reveal"><h2 class="section-title">Experience</h2><div class="resume-list">${D.advisor.experience.map(x=>`<div class="resume-item">${x}</div>`).join('')}</div></section>
-    </div>`;
+      const education = D.advisor.education.map(item => `
+        <article class="resume-group reveal">
+            <div class="resume-education-grid">
+                <div class="resume-degree">
+                    <strong>${item.degree}</strong>
+                </div>
+
+                <div class="resume-education-content">
+                    <p class="resume-school">${item.school}</p>
+
+                    ${item.details.map(detail => `
+                        <p class="resume-detail">${detail}</p>
+                    `).join('')}
+                </div>
+            </div>
+        </article>
+    `).join('');
+
+      const experience = D.advisor.experience.map(item => `
+          <article class="resume-group reveal">
+              <p class="resume-role">
+                  <strong>${item.title}</strong>
+              </p>
+
+              ${item.details.map(detail => `
+                  <p class="resume-job-detail">${detail}</p>
+              `).join('')}
+          </article>
+      `).join('');
+
+      main.innerHTML = `
+          <div class="container">
+
+              ${professorHero()}
+
+              <section class="section-block bio-copy reveal">
+                  <h1 class="page-title">Biography</h1>
+                  ${D.advisor.bio.map(x => `<p>${x}</p>`).join('')}
+              </section>
+
+              <section class="section-block">
+                  <h2 class="section-title">Education</h2>
+
+                  <div class="resume-list">
+                      ${education}
+                  </div>
+              </section>
+
+              <section class="section-block">
+                  <h2 class="section-title">Experience</h2>
+
+                  <div class="resume-list">
+                      ${experience}
+                  </div>
+              </section>
+
+          </div>
+      `;
   }
 
   function memberTable(group) {
