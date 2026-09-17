@@ -241,6 +241,7 @@ tbody tr:last-child td { border-bottom: 0; }
   .site-main { padding: 2.4rem 0 3.5rem; }
   .section-block { padding: 2rem 0; }
   .course-row { grid-template-columns: 4.5rem 5.5rem 1fr; gap: .65rem; font-size: .92rem; }
+  .reveal { opacity: 1; transform: none; transition: none; }
 }
 
 @media (max-width: 560px) {
