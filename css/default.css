@@ -35,7 +35,7 @@ button, input { font: inherit; }
 .site-brand { background: var(--page-bg); padding: 3.2rem 0 2.9rem; text-align: center; }
 .site-brand a { color: var(--text); text-decoration: none; }
 .site-brand h1 { margin: 0; font-family: var(--serif); font-size: clamp(2rem, 4.2vw, 2.75rem); line-height: 1.16; letter-spacing: -.02em; font-weight: 700; }
-.site-brand .brand-accent { display: inline-block; width: 52px; height: 4px; margin-top: 1rem; border-radius: 10px; background: var(--green); }
+.site-brand .brand-accent { display: none;}
 
 .nav-shell { position: sticky; top: 0; z-index: 50; background: var(--green); border-top: 1px solid #47a665; border-bottom: 1px solid #47a665; box-shadow: 0 3px 16px rgba(0,0,0,.06); }
 .nav-row { display: flex; align-items: center; min-height: 74px; }
@@ -128,8 +128,83 @@ tbody tr:last-child td { border-bottom: 0; }
 
 .bio-copy { max-width: 1000px; }
 .bio-copy p { color: #555; text-align: justify; }
-.resume-list { display: grid; gap: .65rem; }
-.resume-item { padding: .9rem 1rem; background: #fbfcfb; border-left: 3px solid var(--green); border-radius: 0 8px 8px 0; }
+.resume-list { display: grid; gap: 1rem; }
+
+.resume-group {
+    padding: 1rem 1.15rem 1.05rem;
+    background: #fbfcfb;
+    border-left: 3px solid var(--green);
+    border-radius: 0 8px 8px 0;
+
+    transition:
+        background .2s ease,
+        transform .2s ease,
+        border-color .2s ease;
+}
+
+.resume-group:hover {
+    background: var(--green-wash);
+    border-left-color: var(--green-dark);
+    transform: translateX(3px);
+}
+
+
+/* Education 第一行 */
+
+.resume-primary {
+    margin: 0;
+}
+
+.resume-primary strong {
+    margin-right: .25rem;
+    font-family: var(--serif);
+    font-size: 1.05rem;
+}
+
+
+/* Education 第二、三行 */
+
+.resume-education-grid {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    column-gap: .65rem;
+    align-items: start;
+}
+
+.resume-degree {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+.resume-school {
+    margin: 0;
+    line-height: 1.7;
+}
+
+.resume-detail {
+    margin: .35rem 0 0;
+    line-height: 1.7;
+}
+
+
+/* Experience 職稱 */
+
+.resume-role {
+    margin: 0 0 .25rem;
+}
+
+.resume-role strong {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+}
+
+
+/* Experience 工作內容 */
+
+.resume-job-detail {
+    margin: 0;
+}
 
 .site-footer { padding: 2.2rem 0 2.6rem; background: #f4f4f4; border-top: 1px solid #ededed; color: #666; text-align: center; font-size: .88rem; }
 .site-footer p { margin: .25rem 0; }
@@ -177,6 +252,8 @@ tbody tr:last-child td { border-bottom: 0; }
   .course-row .course-name { grid-column: 1 / -1; }
   .news-item { padding: 1rem 1rem 1rem 1.2rem; }
   .interest-card { padding: 1rem; }
+  .resume-group { padding: .9rem 1rem; }
+  .resume-detail { padding-left: 1rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
