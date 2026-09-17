@@ -17,13 +17,13 @@ window.AICLAB_DATA = {
   },
   "professor": {
     "name": "Prof. Chung-Chih Hung",
-    "department": "Department of Electrical and Computer Engineering",
+    "department": "Department of Electronics and Electrical Engineering",
     "university": "National Chiao Tung University",
     "address": "1001 University Road, Hsinchu, 30010, Taiwan",
     "office": "ED836",
     "phone": "+886-3-5712121 ext. 54535",
     "fax": "+886-3-5710116",
-    "email": "cchung@mail.nctu.edu.tw",
+    "email": "cchung@nycu.edu.tw",
     "image": "assets/professor_avatar.jpg"
   },
   "advisor": {

@@ -72,8 +72,13 @@ button, input { font: inherit; }
 .news-list { display: grid; gap: 1.15rem; }
 .news-item { position: relative; padding: 1.15rem 1.35rem 1.15rem 1.55rem; border-left: 4px solid #d04b4b; background: linear-gradient(90deg, #fff8f8 0%, #fff 72%); border-radius: 0 12px 12px 0; transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease; }
 .news-item:hover { transform: translateX(4px); border-left-color: #9f2020; box-shadow: 0 8px 20px rgba(142, 35, 35, .08); }
-.news-item h3 { margin: 0 0 .35rem; color: var(--news); font-family: var(--serif); font-size: 1.13rem; }
-.news-item p { margin: 0; color: #744343; }
+.news-item h3 { margin: 0 0 .55rem; color: var(--news); font-family: var(--serif); font-size: 1.5rem; }
+.news-details { display: grid; gap: .18rem; }
+.news-detail { margin: 0; color: #744343; line-height: 1.65; }
+.news-authors { margin-top: .05rem; }
+.news-paper-title { margin-top: .05rem; }
+.news-venue { margin-top: .05rem; }
+.news-translation { margin-top: .05rem; }
 
 .research-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.45rem; }
 .research-card { overflow: hidden; background: #fff; border: 1px solid var(--border); border-radius: 12px; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }

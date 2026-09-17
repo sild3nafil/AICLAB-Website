@@ -81,11 +81,31 @@
   }
 
   function renderHome(main) {
-    const news = newestFirst(D.news).map(item => `
-      <article class="news-item reveal">
-        <h3>${item.title}</h3>
-        ${item.details ? `<p>${item.details}</p>` : ''}
-      </article>`).join('');
+    const news = newestFirst(D.news).map(item => {
+        const details = [
+            ["authors", item.authors],
+            ["paper-title", item.paperTitle],
+            ["venue", item.venue],
+            ["translation", item.translation]
+        ]
+        .filter(([, text]) => text && text.trim())
+        .map(([type, text]) => `
+            <p class="news-detail news-${type}">
+                ${text}
+            </p>
+        `)
+        .join("");
+
+        return `
+            <article class="news-item reveal">
+                <h3>${item.title}</h3>
+
+                <div class="news-details">
+                    ${details}
+                </div>
+            </article>
+        `;
+    }).join('');
     const cards = D.researchCards.map(r => `
       <article class="research-card reveal">
         <a href="INTERESTS.html#${r.id}">
@@ -96,7 +116,7 @@
     main.innerHTML = `<div class="container">
       ${professorHero()}
       <section class="section-block">
-        <h2 class="section-title">NEWS</h2>
+        <h1 class="page-title">NEWS</h1>
         <div class="news-list">${news}</div>
       </section>
       <section class="section-block">
