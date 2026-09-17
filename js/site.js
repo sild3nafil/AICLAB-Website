@@ -81,7 +81,9 @@
   }
 
   function renderHome(main) {
-    const news = newestFirst(D.news).map(item => {
+    const NEWS_PER_PAGE = 5;
+
+    function createNewsItem(item) {
         const details = [
             ["authors", item.authors],
             ["paper-title", item.paperTitle],
@@ -97,7 +99,7 @@
         .join("");
 
         return `
-            <article class="news-item reveal">
+            <article class="news-item">
                 <h3>${item.title}</h3>
 
                 <div class="news-details">
@@ -105,7 +107,97 @@
                 </div>
             </article>
         `;
-    }).join('');
+    }
+
+
+    function renderNewsPage(page = 1, scrollToNews = false) {
+        const newsList = document.querySelector("#news-list");
+        const pagination = document.querySelector("#news-pagination");
+
+        if (!newsList || !pagination) return;
+
+        // 原始資料由舊到新，因此先反轉成最新在前
+        const allNews = newestFirst(D.news);
+
+        const totalPages = Math.max(
+            1,
+            Math.ceil(allNews.length / NEWS_PER_PAGE)
+        );
+
+        // 防止超過有效頁碼
+        page = Math.max(1, Math.min(page, totalPages));
+
+        const startIndex = (page - 1) * NEWS_PER_PAGE;
+        const endIndex = startIndex + NEWS_PER_PAGE;
+
+        const pageNews = allNews.slice(startIndex, endIndex);
+
+        // 顯示當頁的 7 筆 News
+        newsList.innerHTML = pageNews
+            .map(createNewsItem)
+            .join("");
+
+        // 建立頁碼
+        let pageButtons = "";
+
+        for (let i = 1; i <= totalPages; i++) {
+            pageButtons += `
+                <button
+                    type="button"
+                    class="news-page-button ${i === page ? "is-active" : ""}"
+                    data-page="${i}"
+                    ${i === page ? 'aria-current="page"' : ""}
+                >
+                    ${i}
+                </button>
+            `;
+        }
+
+        pagination.innerHTML = `
+            <button
+                type="button"
+                class="news-page-button news-page-arrow"
+                data-page="${page - 1}"
+                ${page === 1 ? "disabled" : ""}
+                aria-label="Previous page"
+            >
+                ←
+            </button>
+
+            ${pageButtons}
+
+            <button
+                type="button"
+                class="news-page-button news-page-arrow"
+                data-page="${page + 1}"
+                ${page === totalPages ? "disabled" : ""}
+                aria-label="Next page"
+            >
+                →
+            </button>
+        `;
+
+        pagination
+            .querySelectorAll("[data-page]")
+            .forEach(button => {
+                button.addEventListener("click", () => {
+                    if (button.disabled) return;
+
+                    const nextPage = Number(button.dataset.page);
+
+                    renderNewsPage(nextPage, true);
+                });
+            });
+
+        // 換頁後回到 NEWS 標題
+        if (scrollToNews) {
+            document.querySelector("#news-section")?.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }
+    }
+
     const cards = D.researchCards.map(r => `
       <article class="research-card reveal">
         <a href="INTERESTS.html#${r.id}">
@@ -113,11 +205,17 @@
           <h3>${r.title}</h3><span class="more">Click photo to see more →</span>
         </a>
       </article>`).join('');
+      
     main.innerHTML = `<div class="container">
       ${professorHero()}
       <section class="section-block">
-        <h1 class="page-title">NEWS</h1>
-        <div class="news-list">${news}</div>
+        <div class="news-list">
+          <section class="section-block" id="news-section" >
+          <h1 class="page-title">NEWS</h1>
+          <div id="news-list" class="news-list"></div>
+          <nav id="news-pagination" class="news-pagination" aria-label="News pages"></nav>
+          </section>
+        </div>
       </section>
       <section class="section-block">
         <h2 class="section-title">Current Research Interests</h2>
@@ -133,6 +231,7 @@
         <a class="card map-card reveal" href="https://www.nycu.edu.tw/" target="_blank" rel="noopener"><img src="assets/campus_map.jpg" alt="Campus map" loading="lazy"></a>
       </section>
     </div>`;
+    renderNewsPage(1);
   }
 
   function renderAdvisor(main) {

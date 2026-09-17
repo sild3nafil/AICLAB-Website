@@ -21,7 +21,7 @@ window.AICLAB_DATA.news = [
     authors: "Jun-Ren Su and Te-Wen Liao,",
     paperTitle: "",
     venue: "2010 Nationwide Graduate-School-Level Full Custom Integrated Circuit Design Contest by Ministry of Education",
-    translation: "(教育部全國大學校院積體電路設計競賽研究所全客戶設計組佳作，得獎學生：蘇俊仁、廖德文)"
+    translation: "（教育部全國大學校院積體電路設計競賽研究所全客戶設計組佳作，得獎學生：蘇俊仁、廖德文）"
   },
   {
     title: "Best Paper Award",
@@ -35,7 +35,7 @@ window.AICLAB_DATA.news = [
     authors: "Jun-Ren Su and Jin-Yi Kuo,",
     paperTitle: "",
     venue: "2011 Nationwide Graduate-School-Level Full Custom Integrated Circuit Design Contest by Ministry of Education.",
-    translation: "(教育部全國大學校院積體電路設計競賽研究所全客戶設計組特優，得獎學生：蘇俊仁、郭駿逸)"
+    translation: "（教育部全國大學校院積體電路設計競賽研究所全客戶設計組特優，得獎學生：蘇俊仁、郭駿逸）"
   },
   {
     title: "Best Paper Award",
@@ -56,28 +56,28 @@ window.AICLAB_DATA.news = [
     authors: "Z.-Y. Chen and C.-C. Hung,",
     paperTitle: "“A High Efficiency Continuous-Time Delta-Sigma Modulator with New Time-Domain Flash Quantizer,”",
     venue: "Macronix Educational Foundation, July 2015.",
-    translation: "(陳宗益，“使用新型的時域快閃式量化器之高效率連續時間三角積分調變器，” 第十五屆旺宏金矽獎優勝獎，2015.)"
+    translation: "（陳宗益，“使用新型的時域快閃式量化器之高效率連續時間三角積分調變器，” 第十五屆旺宏金矽獎優勝獎，2015。）"
   },
   {
     title: "Excellent Design Award (Analog IC)",
     authors: "",
     paperTitle: "“A High Efficiency Continuous-Time Delta-Sigma Modulator with New Time-Domain Flash Quantizer,”",
     venue: "Chip Implementation Center (CIC), 2016.",
-    translation: "(優等設計獎（類比），“使用新型的「時域快閃式量化器」之高效率連續時間三角積分調變器，” 國家晶片系統設計中心，2016.)"
+    translation: "（優等設計獎（類比），“使用新型的「時域快閃式量化器」之高效率連續時間三角積分調變器，” 國家晶片系統設計中心，2016。）"
   },
   {
     title: "Golden Silicon Award",
     authors: "H.-C. Chu and C.-C. Hung,",
     paperTitle: "“A Low-Cost Low-Power Dual-Slope Temperature Sensor,”",
     venue: "Macronix Educational Foundation, July 2016.",
-    translation: "(朱行健，“一個低成本低功率雙斜率式溫度感測器，” 第十六屆旺宏金矽獎優勝獎，2016.)"
+    translation: "（朱行健，“一個低成本低功率雙斜率式溫度感測器，” 第十六屆旺宏金矽獎優勝獎，2016。）"
   },
   {
     title: "Extraordinary Excellence Award",
     authors: "",
     paperTitle: "“Multiple-Input Multiple-Output Smart Reconfigurable Battery Management System,”",
     venue: "National Program for Intelligent Electronics, Ministry of Science and Technology (MOST), September 2016.",
-    translation: "(特優獎，“多輸入多輸出智慧型可重組態之電池管理系統，” 科技部智慧電子國家型科技計畫，2016.)"
+    translation: "（特優獎，“多輸入多輸出智慧型可重組態之電池管理系統，” 科技部智慧電子國家型科技計畫，2016。）"
   },
   {
     title: "Highlighted Paper in 2017 VLSI Circuit Symposium",
