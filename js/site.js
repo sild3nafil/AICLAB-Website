@@ -80,6 +80,124 @@
       </section>`;
   }
 
+  function renderHomeSlider() {
+      const slides = D.homeSlider || [];
+
+      if (!slides.length) return "";
+
+      return `
+          <section
+              class="home-slider reveal"
+              data-home-slider
+              aria-label="AICLAB announcements"
+          >
+              <div class="home-slider-viewport">
+
+                  <div class="home-slider-track">
+
+                      ${slides.map((slide, index) => {
+
+                          const content = `
+                              <img
+                                  src="${slide.image}"
+                                  alt="${slide.alt || `Slide ${index + 1}`}"
+                              >
+
+                              ${
+                                  slide.title || slide.description
+                                      ? `
+                                          <div class="home-slide-caption">
+
+                                              ${
+                                                  slide.title
+                                                      ? `<h2>${slide.title}</h2>`
+                                                      : ""
+                                              }
+
+                                              ${
+                                                  slide.description
+                                                      ? `<p>${slide.description}</p>`
+                                                      : ""
+                                              }
+
+                                          </div>
+                                      `
+                                      : ""
+                              }
+                          `;
+
+                          return `
+                              <div class="home-slide">
+
+                                  ${
+                                      slide.link
+                                          ? `
+                                              <a href="${slide.link}">
+                                                  ${content}
+                                              </a>
+                                          `
+                                          : content
+                                  }
+
+                              </div>
+                          `;
+                      }).join("")}
+
+                  </div>
+
+                  ${
+                      slides.length > 1
+                          ? `
+                              <button
+                                  type="button"
+                                  class="home-slider-arrow home-slider-prev"
+                                  aria-label="Previous slide"
+                              >
+                                  ‹
+                              </button>
+
+                              <button
+                                  type="button"
+                                  class="home-slider-arrow home-slider-next"
+                                  aria-label="Next slide"
+                              >
+                                  ›
+                              </button>
+                          `
+                          : ""
+                  }
+
+              </div>
+
+              ${
+                  slides.length > 1
+                      ? `
+                          <div
+                              class="home-slider-dots"
+                              aria-label="Select slide"
+                          >
+
+                              ${slides.map((_, index) => `
+                                  <button
+                                      type="button"
+                                      class="home-slider-dot ${
+                                          index === 0 ? "is-active" : ""
+                                      }"
+                                      data-slide="${index}"
+                                      aria-label="Show slide ${index + 1}"
+                                      ${index === 0 ? 'aria-current="true"' : ""}
+                                  ></button>
+                              `).join("")}
+
+                          </div>
+                      `
+                      : ""
+              }
+
+          </section>
+      `;
+  }
+
   function renderHome(main) {
     const NEWS_PER_PAGE = 5;
 
@@ -207,7 +325,7 @@
       </article>`).join('');
       
     main.innerHTML = `<div class="container">
-      ${professorHero()}
+      ${renderHomeSlider()}
       <section class="section-block">
         <div class="news-list">
           <section class="section-block" id="news-section" >
@@ -406,12 +524,187 @@
     b.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
   }
 
+  function initHomeSlider() {
+      const slider = document.querySelector("[data-home-slider]");
+
+      if (!slider) return;
+
+      const track = slider.querySelector(".home-slider-track");
+
+      const slides = [
+          ...slider.querySelectorAll(".home-slide")
+      ];
+
+      const dots = [
+          ...slider.querySelectorAll(".home-slider-dot")
+      ];
+
+      const prevButton =
+          slider.querySelector(".home-slider-prev");
+
+      const nextButton =
+          slider.querySelector(".home-slider-next");
+
+      if (slides.length <= 1) return;
+
+      let currentIndex = 0;
+
+      let autoPlayTimer = null;
+
+      const AUTO_PLAY_DELAY = 5000;
+
+
+      function showSlide(index) {
+
+          currentIndex =
+              (index + slides.length) % slides.length;
+
+          track.style.transform =
+              `translateX(-${currentIndex * 100}%)`;
+
+
+          dots.forEach((dot, index) => {
+
+              const active =
+                  index === currentIndex;
+
+              dot.classList.toggle(
+                  "is-active",
+                  active
+              );
+
+              if (active) {
+                  dot.setAttribute(
+                      "aria-current",
+                      "true"
+                  );
+              } else {
+                  dot.removeAttribute(
+                      "aria-current"
+                  );
+              }
+
+          });
+      }
+
+
+      function nextSlide() {
+          showSlide(currentIndex + 1);
+      }
+
+
+      function previousSlide() {
+          showSlide(currentIndex - 1);
+      }
+
+
+      function stopAutoPlay() {
+
+          if (autoPlayTimer) {
+
+              clearInterval(autoPlayTimer);
+
+              autoPlayTimer = null;
+          }
+      }
+
+
+      function startAutoPlay() {
+
+          stopAutoPlay();
+
+          if (
+              window.matchMedia(
+                  "(prefers-reduced-motion: reduce)"
+              ).matches
+          ) {
+              return;
+          }
+
+          autoPlayTimer = setInterval(
+              nextSlide,
+              AUTO_PLAY_DELAY
+          );
+      }
+
+
+      prevButton?.addEventListener(
+          "click",
+          () => {
+
+              previousSlide();
+
+              startAutoPlay();
+          }
+      );
+
+
+      nextButton?.addEventListener(
+          "click",
+          () => {
+
+              nextSlide();
+
+              startAutoPlay();
+          }
+      );
+
+
+      dots.forEach(dot => {
+
+          dot.addEventListener(
+              "click",
+              () => {
+
+                  showSlide(
+                      Number(dot.dataset.slide)
+                  );
+
+                  startAutoPlay();
+              }
+          );
+
+      });
+
+
+      /*
+      * 滑鼠停在圖片上時暫停
+      */
+
+      slider.addEventListener(
+          "mouseenter",
+          stopAutoPlay
+      );
+
+
+      slider.addEventListener(
+          "mouseleave",
+          startAutoPlay
+      );
+
+
+      slider.addEventListener(
+          "focusin",
+          stopAutoPlay
+      );
+
+
+      slider.addEventListener(
+          "focusout",
+          startAutoPlay
+      );
+
+
+      startAutoPlay();
+  }
+
   function run() {
     buildHeader(); buildFooter();
     const main=$('#main-content');
     const page=document.body.dataset.page;
     const renderers={home:renderHome,advisor:renderAdvisor,members:renderMembers,courses:renderCourses,publications:renderPublications,funded:renderFunded,dissertation:renderDissertation,interests:renderInterests};
     (renderers[page] || renderHome)(main);
+    if (page === "home") { initHomeSlider(); }
     initReveal(); initBackToTop();
   }
 
