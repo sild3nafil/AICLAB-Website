@@ -32,7 +32,10 @@ HTML 頁面本身只留下共用骨架，因此不需要再把大量 Word/inline
 ```js
 {
   "title": "新的消息標題",
-  "details": "消息內容"
+  "author": "作者名稱",
+  "paperTitle": "論文or會議名稱",
+  "venue": "場地、時間等",
+  "translation": "中文翻譯"
 }
 ```
 
